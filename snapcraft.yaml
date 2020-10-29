@@ -1,0 +1,69 @@
+name: terminator
+adopt-info: terminator
+summary: A Python-based resource monitor for your terminal. 
+description: |
+  The goal of this project is to produce a useful tool for arranging terminals. 
+  It is inspired by programs such as gnome-multi-term, quadkonsole, etc. in that 
+  the main focus is arranging terminals in grids (tabs is the most common default
+  method, which Terminator also supports).
+
+  When you run Terminator, you will get a terminal in a window, just like almost every other 
+  terminal emulator available. There is also a titlebar which will update as shells/programs
+  inside the terminal tell it to. Also on the titlebar is a small button that opens the 
+  grouping menu. From here you can put terminals into groups, which allows you to control
+  multiple terminals simultaneously.
+    
+license: GPL-2.0
+
+base: core18
+grade: stable
+confinement: strict
+
+apps:
+  terminator:
+    command: usr/bin/terminator
+    environment:
+      LC_ALL: C.UTF-8
+      LANG: C.UTF-8
+      PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
+    plugs: 
+      - mount-observe
+      - network-control
+      - process-control
+      - system-observe
+      - hardware-observe
+      - network
+      - physical-memory-observe
+
+parts:
+  terminator:
+    source: https://github.com/gnome-terminator/terminator
+    source-type: git
+    plugin: nil
+    
+    build-packages:
+      - python3
+      
+    stage-packages:
+      - python3
+    
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//')"
+    
+    override-build: |
+      python3 setup.py build
+      python3 setup.py install --single-version-externally-managed --record=install-files.txt
+
+  cleanup:
+    after:  # Make this part run last; list all your other parts here
+      - terminator
+    plugin: nil
+    build-snaps:  # List all content-snaps and base snaps you're using here
+      - core18
+      - gnome-3-28-1804
+    override-prime: |
+      set -eux
+      for snap in "core18" "gnome-3-28-1804"; do  # List all content-snaps and base snaps you're using here
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
+      done
