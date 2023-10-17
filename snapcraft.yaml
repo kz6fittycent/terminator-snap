@@ -15,9 +15,9 @@ description: |
     
 license: GPL-2.0
 
-base: core18
+base: core20
 grade: stable
-confinement: strict
+confinement: classic
 
 apps:
   terminator:
@@ -26,20 +26,12 @@ apps:
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
       PYTHONPATH: $SNAP/usr/lib/python3/dist-packages
-    plugs: 
-      - mount-observe
-      - network-control
-      - process-control
-      - system-observe
-      - hardware-observe
-      - network
-      - physical-memory-observe
 
 parts:
   terminator:
     source: https://github.com/gnome-terminator/terminator
     source-type: git
-    plugin: nil
+    plugin: python
     
     build-packages:
       - python3
@@ -54,16 +46,3 @@ parts:
     override-build: |
       python3 setup.py build
       python3 setup.py install --single-version-externally-managed --record=install-files.txt
-
-  cleanup:
-    after:  # Make this part run last; list all your other parts here
-      - terminator
-    plugin: nil
-    build-snaps:  # List all content-snaps and base snaps you're using here
-      - core18
-      - gnome-3-28-1804
-    override-prime: |
-      set -eux
-      for snap in "core18" "gnome-3-28-1804"; do  # List all content-snaps and base snaps you're using here
-        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$SNAPCRAFT_PRIME/{}" \;
-      done
