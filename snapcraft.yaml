@@ -59,8 +59,8 @@ parts:
     
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags | sed 's/^v//')"
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f3)"
     
     override-build: |
       python3 setup.py build
-      python3 setup.py install --prefix=/usr/local/bin --single-version-externally-managed --record=install-files.txt
+      python3 setup.py install --prefix=/usr/local --single-version-externally-managed --record=install-files.txt
