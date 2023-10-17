@@ -34,10 +34,28 @@ parts:
     plugin: python
     
     build-packages:
-      - python3
+      - python3 
+      - python3-gi 
+      - python3-gi-cairo 
+      - python3-psutil 
+      - python3-configobj 
+      - gir1.2-keybinder-3.0 
+      - gir1.2-vte-2.91 
+      - gettext 
+      - intltool 
+      - dbus-x11
       
     stage-packages:
-      - python3
+      - python3 
+      - python3-gi 
+      - python3-gi-cairo 
+      - python3-psutil 
+      - python3-configobj 
+      - gir1.2-keybinder-3.0 
+      - gir1.2-vte-2.91 
+      - gettext 
+      - intltool 
+      - dbus-x11
     
     override-pull: |
       snapcraftctl pull
