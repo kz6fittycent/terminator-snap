@@ -63,4 +63,4 @@ parts:
     
     override-build: |
       python3 setup.py build
-      python3 setup.py install --prefix=/usr/local --single-version-externally-managed --record=install-files.txt
+      python3 setup.py install --prefix=$SNAPCRAFT_PART_INSTALL/usr/local --single-version-externally-managed --record=install-files.txt
