@@ -44,6 +44,7 @@ parts:
       - gettext 
       - intltool 
       - dbus-x11
+      - libcext0
       
     stage-packages:
       - python3 
@@ -56,10 +57,11 @@ parts:
       - gettext 
       - intltool 
       - dbus-x11
+      - libcext0
     
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f3)"
+      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f2)"
     
     override-build: |
       python3 setup.py build
