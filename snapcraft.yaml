@@ -54,8 +54,6 @@ parts:
       - python3-cairo
       - python3-configobj 
       - gir1.2-keybinder-3.0 
-      - gir1.2-vte-2.91       
-      - gir1.2-keybinder-3.0 
       - gir1.2-vte-2.91 
       - gettext 
       - intltool 
