@@ -46,7 +46,6 @@ parts:
       - dbus-x11
       - libcext0
       - python3-pip
-      - python3-pip-whl
       
     stage-packages:
       - python3 
