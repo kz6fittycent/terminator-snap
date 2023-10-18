@@ -65,5 +65,6 @@ parts:
       snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
     
     override-build: |
+      pip install -U psutil
       python3 setup.py build
       python3 setup.py install --prefix=$SNAPCRAFT_PART_INSTALL/usr/local --single-version-externally-managed --record=install-files.txt
