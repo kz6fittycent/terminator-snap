@@ -19,9 +19,6 @@ base: core24
 grade: stable
 confinement: classic
 
-environment:
-  PYTHONPATH: "$SNAP/lib/python3.12/site-packages:${PYTHONPATH}"
-
 apps:
   terminator:
     command: usr/local/bin/terminator
