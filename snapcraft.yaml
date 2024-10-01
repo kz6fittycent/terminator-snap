@@ -15,7 +15,7 @@ description: |
     
 license: GPL-2.0
 
-base: core20
+base: core24
 grade: stable
 confinement: classic
 
@@ -60,8 +60,8 @@ parts:
       - dbus-x11
     
     override-pull: |
-      snapcraftctl pull
-      snapcraftctl set-version "$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
+      craftctl default
+      craftctl set version="$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
     
     override-build: |
       pip3 install psutil pycairo dbus-python
