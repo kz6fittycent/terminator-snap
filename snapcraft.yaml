@@ -47,6 +47,7 @@ parts:
       - libcext0
       - python3-pip
       - python3-dbus
+      - pkg-config
       
     stage-packages:
       - python3-dev
