@@ -51,6 +51,7 @@ parts:
       - pkg-config
       - cmake
       - libdbus-1-dev
+      - libgirepository1.0-dev
       
     override-pull: |
       craftctl default
