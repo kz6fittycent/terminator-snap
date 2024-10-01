@@ -66,4 +66,4 @@ parts:
     override-build: |
       pip3 install psutil pycairo dbus-python
       python3 setup.py build
-      python3 setup.py install --prefix=$SNAPCRAFT_PART_INSTALL/usr/local --single-version-externally-managed --record=install-files.txt
+      python3 setup.py install --prefix=$CRAFT_PART_INSTALL/usr/local --single-version-externally-managed --record=install-files.txt
