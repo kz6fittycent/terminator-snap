@@ -22,6 +22,8 @@ confinement: classic
 apps:
   terminator:
     command: usr/local/bin/terminator
+    extensions: 
+      - gnome
     environment:
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
@@ -46,6 +48,7 @@ parts:
       - dbus-x11
       - libcext0
       - python3-pip
+      - python3-dbus
       
     stage-packages:
       - python3-dev
