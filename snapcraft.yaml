@@ -19,13 +19,16 @@ base: core24
 grade: stable
 confinement: classic
 
+environment:
+  PYTHONPATH: "$SNAP/lib/python3.12/site-packages:${PYTHONPATH}"
+
 apps:
   terminator:
     command: usr/local/bin/terminator
     environment:
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
-      PYTHONPATH: ""
+      PYTHONPATH: "$SNAP/lib/python3.12/site-packages:${PYTHONPATH}"
 
 parts:
   terminator:
@@ -34,8 +37,8 @@ parts:
     plugin: python
     build-environment:
       - PARTS_PYTHON_VENV_ARGS: --system-site-packages
-      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
-      - PYTHONPATH: ""    
+      - PATH: ${CRAFT_PART_INSTALL}/usr/local/bin:${PATH}
+      - PYTHONPATH: "${CRAFT_PART_INSTALL}/lib/python3.12/site-packages:${PYTHONPATH}"
     
     build-packages:
       - python3-dev
