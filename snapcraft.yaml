@@ -32,6 +32,10 @@ parts:
     source: https://github.com/gnome-terminator/terminator
     source-type: git
     plugin: python
+    build-environment:
+      - PARTS_PYTHON_VENV_ARGS: --system-site-packages
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
+      - PYTHONPATH: ""    
     
     build-packages:
       - python3-dev
