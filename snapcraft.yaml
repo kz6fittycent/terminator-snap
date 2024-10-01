@@ -22,8 +22,6 @@ confinement: classic
 apps:
   terminator:
     command: usr/local/bin/terminator
-    extensions: 
-      - gnome
     environment:
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
