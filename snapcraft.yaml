@@ -52,6 +52,9 @@ parts:
       - cmake
       - libdbus-1-dev
       - libgirepository1.0-dev
+
+    stage-packages:
+      - python3
       
     override-pull: |
       craftctl default
