@@ -50,6 +50,7 @@ parts:
       - python3-dbus
       - pkg-config
       - cmake
+      - libdbus-1-dev
       
     override-pull: |
       craftctl default
