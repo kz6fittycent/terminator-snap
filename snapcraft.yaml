@@ -34,7 +34,7 @@ parts:
     plugin: python
     build-environment:
       - PARTS_PYTHON_VENV_ARGS: --system-site-packages
-      - PATH: ${CRAFT_PART_INSTALL}/usr/local/bin:${PATH}
+      - PATH: ${CRAFT_PART_INSTALL}/bin:${PATH}
       - PYTHONPATH: "${CRAFT_PART_INSTALL}/lib/python3.12/site-packages:${PYTHONPATH}"
     
     build-packages:
