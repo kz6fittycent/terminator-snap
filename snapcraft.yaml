@@ -21,7 +21,7 @@ confinement: classic
 
 apps:
   terminator:
-    command: usr/local/bin/terminator
+    command: launch
     environment:
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
@@ -62,3 +62,9 @@ parts:
     override-pull: |
       craftctl default
       craftctl set version="$(git describe --tags | sed 's/^v//' | cut -d "-" -f1)"
+  
+  config:
+    plugin: dump
+    source: snap/local
+    prime:
+        - launch
