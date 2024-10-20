@@ -25,7 +25,7 @@ package-repositories:
 
 apps:
   terminator:
-    command: launch
+    command: usr/local/bin/terminator
     environment:
       LC_ALL: C.UTF-8
       LANG: C.UTF-8
