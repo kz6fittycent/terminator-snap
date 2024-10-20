@@ -1,0 +1,5 @@
+#!/bin/sh
+
+LAUNCH=`which terminator`
+
+${LAUNCH}
