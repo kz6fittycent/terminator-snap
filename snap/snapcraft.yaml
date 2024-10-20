@@ -19,6 +19,10 @@ base: core24
 grade: stable
 confinement: classic
 
+package-repositories:
+  - type: apt
+    ppa: deadsnakes/ppa
+
 apps:
   terminator:
     command: launch
