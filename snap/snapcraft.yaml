@@ -63,6 +63,7 @@ parts:
       - python3
       - python3-psutil
       - psutils
+      - elfutils
       
     override-pull: |
       craftctl default
